@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Employee Details</title>
+    </head>
+    <body>
+<form autocomplete="off">
+<fieldset>
+<legend>Employee Details</legend>
+<div>
+ <label for="fname">firstname:</label>
+<input type="text" id="fname" name="firstname" required pattern="[A-za-z ]+">   
+</div>
+<div>
+<label for="lname">lastname:</label>
+<input type="text" id="lname" name="lastname" required minlength="5">
+</div>
+<div>
+<label>gender:</label>
+<input type="radio" id="male" name="gender" required>
+<label for="male">male</label>
+<input type="radio" id="female" name="gender" required>
+<label for="female">female</label>
+</div>
+<div>
+<label for="mobile">mobile no.:</label>
+<input type="mob" id="mobile" name="mobile" required length="11" pattern="01[0125][0-9]{8}">
+</div>
+<div>
+<label for="course">course:</label>
+<select id="course" name="course>">
+<option value="">select course</option>
+<option value="html">html</option>
+<option value="css">css</option>
+<option value="java">java</option>
+<option value="php">php</option>
+</select>
+</div>
+<div>
+<label for="image">upload</label>
+<input type="file" id="image" name="image" accept=".png">
+</div>
+<div>
+<label for="date">date of birth:</label>
+<input type="date" id="date" name="date" required>
+</div>
+<div>
+<label>tracks:</label>
+<input type="checkbox" id="front" name="track" value="front end" checked>
+<label for="front">front end</label>
+<input type="checkbox" id="back" name="track" value="back end" checked>
+<label for="back">back end</label>
+<input type="checkbox" id="full" name="track" value="full stack" checked>
+<label for="full">full stack</label>
+</div>
+<div>
+<label for="level">level 1:</label>
+<input type="range" id="level" name="level" min="10" max="100">
+</div>
+<div>
+<label for="comment">comment</label><br>
+<textarea id="comment" name="comment" rows="4" cols="30" required>
+</textarea>
+</div>
+<div>
+<input type="submit" value="submit">
+</div>
+</fieldset>
+</form>
+</body>
+</html>
