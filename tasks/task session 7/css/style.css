@@ -1,0 +1,353 @@
+/* CARD HOVER DEMOS - STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f5f5;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #333;
+}
+
+/*SECTION 1*/
+
+.profile-section {
+  padding: 110px 40px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-cards-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.profile-card {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 400ms ease, opacity 400ms ease, filter 400ms ease;
+  cursor: pointer;
+}
+
+.profile-image {
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 400ms ease;
+}
+
+.info-panel {
+  width: 350px;
+  height: 0;
+  background: #e0e0e0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 24px;
+  transform: translateX(20px);
+  transition: height 400ms ease;
+}
+
+.info-panel .name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #262626;
+  letter-spacing: 2.5px;
+  margin-bottom: 10px;
+}
+
+.info-panel .job {
+  font-size: 19px;
+  font-weight: 400;
+  color: #7a7a7a;
+  letter-spacing: 1.5px;
+}
+
+.profile-card:hover {
+  z-index: 5;
+}
+
+.profile-card:hover .info-panel {
+  height: 100px;
+}
+
+.profile-card:hover .profile-image img {
+  transform: scale(1.06);
+}
+
+.profile-cards-wrap:hover .profile-card:not(:hover) {
+  opacity: 0.8;
+  
+}
+
+/* SECTION 2 */
+
+.option-section {
+    padding: 60px 40px 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.option-row-second {
+    margin-top: 70px;
+}
+
+.option-card {
+    width: 100%;
+    max-width: 465px;
+    min-height: 200px;
+    padding: 35px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    flex: 1 1 465px;
+    transition: background-color 400ms ease, border-color 400ms ease,color 400ms ease;
+}
+
+.option-card h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    transition: color 400ms ease;
+}
+
+.option-card p {
+    font-size: 19px;
+    line-height: 1.5;
+    max-width: 100%;
+    transition: color 400ms ease;
+}
+
+/*  Card 1  */
+
+.option-card-teal {
+    background: #f3fbfb;
+}
+
+.corner-shape {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #159895;
+    transition: transform 500ms ease, background-color 500ms ease;
+    
+}
+
+.corner-arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.option-card-teal:hover {
+    background: #159895;
+}
+
+.option-card-teal:hover .corner-shape {
+    transform: scale(10);
+    background: #128481;
+}
+
+.option-card-teal:hover h3,.option-card-teal:hover p {
+    color: #ffffff;
+} 
+.option-card-house {
+  background: #ffffff;
+  border: 1.5px solid #d9d9d9;
+}
+
+.option-card-house h3 {
+  color: #243033;
+}
+
+.option-card-house p {
+  color: #6d7778;
+}
+
+.house-icon {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 13px;
+  border: 2px solid #243033;
+  border-top: none;
+  margin-bottom: 18px;
+  margin-top: 4px;
+}
+
+.house-icon::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: -11px;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 10px solid #243033;
+}
+
+.house-icon::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -9px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 8px solid #ffffff;
+}
+
+.magenta-strip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  background: #ab3c73;
+  clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 35% 100%, 0% 50%);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 400ms ease;
+}
+
+.strip-arrow {
+  position: absolute;
+  top: 16px;
+  right: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.option-card-house:hover {
+  border-color: #d7a7b5;
+}
+
+.option-card-house:hover .magenta-strip {
+  transform: scaleX(1);
+}
+
+/*RESPONSIVE*/
+
+@media (max-width:1600px) {
+  .profile-cards-wrap {
+    gap: 80px;
+  }
+}
+
+@media (max-width:1500px) {
+  .option-row {
+    gap: 30px;
+  }
+}
+
+@media (max-width:1024px) {
+
+  .profile-section {
+    padding: 80px 20px 40px;
+  }
+
+  .profile-cards-wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .profile-card,.profile-image,.info-panel {
+    width: min(90vw, 450px);
+    height: auto;
+  }
+
+  .profile-image {
+    height: min(90vw, 450px);
+  }
+
+  .option-section {
+    padding: 40px 20px 100px;
+  }
+
+  .option-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .option-row-second {
+    margin-top: 100px;
+  }
+
+  .option-card {
+    width: min(90vw, 465px);
+  }
+}
+
+@media (max-width:600px) {
+
+  .profile-card,
+  .profile-image,
+  .info-panel {
+    width: 100%;
+  }
+
+  .profile-image {
+    height: 80vw;
+  }
+
+  .info-panel .name {
+    font-size: 22px;
+    letter-spacing: 1.5px;
+  }
+
+  .info-panel .job {
+    font-size: 16px;
+  }
+
+  .option-card {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+    padding: 26px;
+  }
+
+  .option-card p {
+    max-width: 100%;
+  }
+
+  .option-row-second {
+    margin-top: 70px;
+  }
+}
