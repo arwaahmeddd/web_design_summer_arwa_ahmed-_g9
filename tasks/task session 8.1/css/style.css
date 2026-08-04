@@ -1,0 +1,362 @@
+:root {
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Color Palette matching Screenshot 1 & 2 */
+  --bg-page-dark: #121215;
+  --text-navy: #152445;
+  --text-muted: #64748b;
+  --accent-green: #50c332;
+  --accent-blue: #1498ff;
+  --neon-cyan: #00a8ff;
+  
+  /* Dimensions & Proportions */
+  --card-width: min(95vw, 500px);
+  --card-height: min(92vh, 740px);
+  --radius: 32px;
+
+  /* Shadows */
+  --shadow-resting: 0 20px 45px -10px rgba(0, 0, 0, 0.5),
+                     0 10px 20px -8px rgba(0, 0, 0, 0.4);
+  --shadow-lifted: 0 30px 60px -12px rgba(0, 0, 0, 0.7),
+                    0 15px 30px -10px rgba(0, 168, 255, 0.2);
+
+  /* Animation Timings */
+  --flip-duration: 0.85s;
+  --flip-ease: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --focus-ring: #00a8ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page-dark);
+  /* Urban textured abstract background matching the yellow & grey vibe in screenshots */
+  background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 75% 20%, rgba(235, 195, 45, 0.28) 0%, transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(235, 195, 45, 0.22) 0%, transparent 45%),
+    linear-gradient(135deg, rgba(18, 18, 21, 0.82) 0%, rgba(25, 27, 34, 0.75) 50%, rgba(15, 15, 18, 0.88) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.scene {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  perspective: 1500px;
+}
+
+.flip-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  transform-style: preserve-3d;
+  transition: transform var(--flip-duration) var(--flip-ease);
+  box-shadow: var(--shadow-resting);
+}
+
+/* Hover lift micro-animation */
+@media (hover: hover) and (pointer: fine) {
+  .scene:hover .card-container {
+    transform: translateY(-8px);
+  }
+  .scene:hover .card-inner {
+    box-shadow: var(--shadow-lifted);
+  }
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+  .scene:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.flip-toggle:checked ~ .card-container .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Keyboard accessibility outline */
+.flip-toggle:focus-visible ~ .card-container {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--bg-page-dark), 0 0 0 6px var(--focus-ring);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front {
+  background-color: #0c0d10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.front-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(125%) brightness(75%);
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+
+.scene:hover .front-bg-image {
+  transform: scale(1.06);
+}
+.front-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(5, 6, 9, 0.4) 40%,
+    rgba(2, 3, 5, 0.88) 72%,
+    rgba(0, 0, 0, 0.98) 95%
+  );
+  z-index: 2;
+}
+
+.front-content {
+  position: relative;
+  z-index: 3;
+  padding: 40px 36px;
+  width: 100%;
+}
+
+.front-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.front-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(23px, 6vw, 27px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Circular neon cyan button with diagonal arrow */
+.circle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  background-color: transparent;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Micro-animation for front circle icon */
+.scene:hover .circle-btn {
+  background-color: var(--neon-cyan);
+  color: #000000;
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.6);
+  transform: scale(1.05) rotate(10deg);
+}
+
+.circle-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.scene:hover .circle-btn svg {
+  transform: translate(2px, -2px);
+}
+
+.card-back {
+  background-color: #ffffff;
+  color: var(--text-navy);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(34px, 7vw, 46px) clamp(32px, 7vw, 42px);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+}
+
+.scene:hover .card-back,
+.flip-toggle:checked ~ .card-container .card-back {
+  pointer-events: auto;
+}
+
+.back-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-icon-wrapper {
+  margin-bottom: 24px;
+  display: inline-flex;
+}
+
+.back-title {
+  margin: 0 0 20px 0;
+  color: var(--text-navy);
+  font-size: clamp(24px, 6vw, 28px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.back-text {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.back-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+/* Pill cyan "Read More ->" button */
+.btn-read-more {
+  position: relative;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #189eff 0%, #0088ff 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15.5px;
+  font-weight: 600;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(20, 152, 255, 0.35);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.arrow-right {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-read-more:hover,
+.btn-read-more:focus-visible {
+  background: linear-gradient(135deg, #2fa9ff 0%, #0077fa 100%);
+  box-shadow: 0 12px 32px rgba(0, 140, 255, 0.65);
+  transform: translateY(-3px) scale(1.03);
+  outline: none;
+}
+
+.btn-read-more:hover .arrow-right,
+.btn-read-more:focus-visible .arrow-right {
+  transform: translateX(6px);
+}
+
+.btn-read-more:active {
+  background: linear-gradient(135deg, #0076f0 0%, #0066d4 100%);
+  box-shadow: 0 4px 14px rgba(0, 140, 255, 0.45);
+  transform: translateY(-1px) scale(0.98);
+}
+@media (max-width: 380px) {
+  .front-content,
+  .card-back {
+    padding: 28px 24px;
+  }
+  
+  .front-title,
+  .back-title {
+    font-size: 22px;
+  }
+  
+  .circle-btn {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-inner,
+  .card-container,
+  .front-bg-image,
+  .circle-btn,
+  .btn-read-more,
+  .arrow-right {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .scene:hover .card-container {
+    transform: none;
+  }
+}
