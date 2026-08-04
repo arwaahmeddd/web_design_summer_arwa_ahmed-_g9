@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="forestBg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1c2418"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="560" fill="url(#forestBg)"/>
+  <g fill="#26331d" opacity="0.85">
+    <path d="M0 60c60 40 120 10 160 60 30-30 90-20 110 20-40-10-80 0-100 30-20-40-90-40-120-10-30-40-60-40-50-100z"/>
+    <path d="M1200 40c-70 30-140 0-180 50-30-30-100-15-120 25 40-10 85 5 105 35 25-40 95-35 125 0 25-45 55-50 70-110z"/>
+  </g>
+  <g opacity="0.5" stroke="#3a4a2a" stroke-width="4" fill="none">
+    <path d="M40 20c10 80-30 120 20 180"/>
+    <path d="M1160 20c-10 80 30 120-20 180"/>
+  </g>
+  <polygon points="600,150 470,560 730,560" fill="#0c0f0a"/>
+  <polygon points="600,180 520,560 680,560" fill="#141810"/>
+  <line x1="600" y1="150" x2="600" y2="560" stroke="#050604" stroke-width="6"/>
+  <g stroke="#0a0d08" stroke-width="10">
+    <line x1="460" y1="330" x2="740" y2="330"/>
+    <line x1="480" y1="400" x2="720" y2="400"/>
+    <line x1="500" y1="470" x2="700" y2="470"/>
+    <line x1="510" y1="540" x2="690" y2="540"/>
+  </g>
+  <g stroke="#141810" stroke-width="6">
+    <line x1="470" y1="560" x2="530" y2="240"/>
+    <line x1="730" y1="560" x2="670" y2="240"/>
+  </g>
+</svg>

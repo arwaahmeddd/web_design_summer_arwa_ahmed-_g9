@@ -288,7 +288,9 @@ body {
     gap: 60px;
   }
 
-  .profile-card,.profile-image,.info-panel {
+  .profile-card,
+  .profile-image,
+  .info-panel {
     width: min(90vw, 450px);
     height: auto;
   }
