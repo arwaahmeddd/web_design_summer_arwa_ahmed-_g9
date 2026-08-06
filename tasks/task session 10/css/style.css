@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #222;
+}
+
+.page {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.left-section {
+  flex: 0 0 68%;
+}
+
+.right-sidebar {
+  flex: 0 0 28%;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.tab-radio {
+  display: none;
+}
+
+.tab-content {
+  display: none;
+}
+
+#tab-vogue:checked ~ .vogue-section {
+  display: block;
+}
+
+#tab-health:checked ~ .health-section {
+  display: block;
+}
+
+.tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 30px;
+}
+
+.tab {
+  cursor: pointer;
+  text-decoration: none;
+  color: #777;
+  font-weight: 500;
+  font-size: 16px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s ease;
+}
+
+#tab-vogue:checked ~ .tabs label[for="tab-vogue"],
+#tab-health:checked ~ .tabs label[for="tab-health"] {
+  color: #222;
+  border-bottom: 3px solid #2563eb;
+}
+
+.tab:hover {
+  color: #2563eb;
+}
+
+.vogue-cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.vogue-card {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  padding-bottom: 15px;
+}
+
+.vogue-card:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.img-wrap {
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.img-wrap img {
+  width: 100%;
+  display: block;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.vogue-card:hover .img-wrap img {
+  transform: scale(1.08);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 15px 15px 8px 15px;
+  line-height: 1.4;
+}
+
+.author {
+  font-size: 13px;
+  color: #777;
+  margin: 0 15px;
+}
+
+.date {
+  font-size: 13px;
+  color: #777;
+  margin: 2px 15px 0 15px;
+}
+
+.section-heading {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.health-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.health-card {
+  display: flex;
+  gap: 15px;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 12px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.health-card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.health-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.health-card-text .card-title {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+}
+
+.health-card-text .author,
+.health-card-text .date {
+  margin: 0;
+  font-size: 12px;
+}
+
+.stay-connected {
+  background-color: #2563eb;
+  color: #ffffff;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.social-icons a {
+  color: #999;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #2563eb;
+  transform: scale(1.2);
+}
+
+.todays-pick-heading {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.todays-pick-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.pick-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.todays-pick-card .author {
+  margin: 0;
+  font-size: 13px;
+}
+
+.todays-pick-card .date {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+}
+
+@media (max-width: 992px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-sidebar {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .vogue-cards {
+    flex-direction: column;
+  }
+
+  .health-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .health-card {
+    flex-direction: row;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}
